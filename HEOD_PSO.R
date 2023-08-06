@@ -161,8 +161,8 @@ exp_log_hoptimal <- function(d, loc){
 # of exp-log model by PSO
 exp_log_pso <- function(nPoints, parms, psoinfo){
   
-  lb <- rep(0, nPoints-1)
-  ub <- rep(0.15, nPoints-1)
+  lb <- rep(0, nPoints)
+  ub <- rep(0.15, nPoints)
   
   pso_res <- globpso(objFunc = exp_log_hoptimal, 
                      lower = lb, upper = ub, 
