@@ -11,6 +11,59 @@ ui <- fluidPage(
     id = "mainpanel", 
     
     tabPanel(
+      "User manual",
+      
+      tags$h2("Hormesis"), 
+      tags$p("$$
+\\tau=\\tau(\\theta)=max \\{ d\\in\\Omega:\\mu(d,\\theta)\\leq\\mu(d,\\theta) \\}
+$$"),
+      
+      tags$h2("Hunt-Bowman Model D-optimal Exact Design"), 
+      tags$p("$$
+ \\mu(d)=\\begin{cases} 
+  c_1d^2+c_2d+\\kappa, & 0 \\leq d\\leq\\tau \\\\
+  \\frac{1}{1+e^{\\beta_0-\\beta_1(d-\\tau)}}, & \\tau<d 
+  \\end{cases}
+ $$"),
+      tags$p("$$
+M(\\xi,\\theta) = \\sum_i f(d_i,\\theta)f^T(d_i,\\theta)\\omega_i
+$$"),
+      tags$p("$$
+f(d,\\theta)=\\frac{\\partial}{\\partial\\theta}\\mu(d,\\theta)
+$$"),
+      
+      tags$h2("exp-log Model \\(\\tau\\)-optimal Exact Design"), 
+      tags$p("$$
+ \\mu(d) = c_0e^{-c_1d}+\\frac{1}{1+e^{\\beta_0-\\beta_1d}}
+ $$"),
+      tags$p("$$
+b^T(\\theta)M^{-1}(\\xi,\\theta)b(\\theta)
+$$"),
+      tags$p("$$
+b(\\theta)=\\frac{\\partial}{\\partial\\theta}\\tau(\\theta)
+$$"),
+      
+      
+      tags$h2("exp-log Model h-optimal Exact Design"), 
+      tags$p("$$
+h^T(0,\\theta)M^-1(\\xi,\\theta)h(0,\\theta)
+$$"),
+      tags$p("$$
+h(d,\\theta)=\\frac{\\partial f(d,\\theta)}{\\partial d}
+$$"),
+      
+      tags$h2("Particle Swarm Optimization"), 
+      tags$p("$$
+v^{t+1}_i = wv^t_i+c_1\\beta_1(p_i-x^t_i)+c_2\\beta_2(g-x^t_i)
+$$"),
+      tags$p("$$
+x^{t+1}_i = x^t_i + v^{t+1}_i
+$$")
+      
+      
+    ),
+    
+    tabPanel(
       "Find Hormesis Exact Optimal Design", 
       
       tabsetPanel(
@@ -51,7 +104,12 @@ ui <- fluidPage(
                    ), 
                    mainPanel(
                      tags$h3("Hunt-Bowman Model D-optimal Exact Design"), 
-                     tags$p(""),
+                     tags$p("$$
+ \\mu(d)=\\begin{cases} 
+  c_1d^2+c_2d+\\kappa, & 0 \\leq d\\leq\\tau \\\\
+  \\frac{1}{1+e^{\\beta_0-\\beta_1(d-\\tau)}}, & \\tau<d 
+  \\end{cases}
+ $$"),
                      fluidRow(
                        column(8, 
                               "Hunt-Bowman Model Parameters", 
@@ -118,6 +176,9 @@ ui <- fluidPage(
                    ), 
                    mainPanel(
                      tags$h3("exp-log Model \\(\\tau\\)-optimal Exact Design"), 
+                     tags$p("$$
+ \\mu(d) = c_0e^{-c_1d}+\\frac{1}{1+e^{\\beta_0-\\beta_1d}}
+ $$"),
                      fluidRow(
                        column(8, 
                               "exp-log Model Parameters", 
@@ -182,7 +243,10 @@ ui <- fluidPage(
                      )
                    ), 
                    mainPanel(
-                     tags$h3("exp-log Model h-optimal Exact Design"), 
+                     tags$h3("exp-log Model h-optimal Exact Design"),
+                     tags$p("$$
+ \\mu(d) = c_0e^{-c_1d}+\\frac{1}{1+e^{\\beta_0-\\beta_1d}}
+ $$"),
                      fluidRow(
                        column(8, 
                               "exp-log Model Parameters", 
